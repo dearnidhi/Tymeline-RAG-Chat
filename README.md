@@ -15,8 +15,10 @@ This project demonstrates the creation of a customer chat assistant for Tymeline
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/tymeline-chat-assistant.git
-   cd tymeline-chat-assistant
+   git clone https://github.com/dearnidhi/Tymeline-RAG-Chat.git
+   cd Tymeline-RAG-Chat
+
+
 
 2. Install the required Python packages:
 
