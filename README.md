@@ -35,11 +35,14 @@ streamlit run app.py
 ## Interact with the Chat Assistant: Use the Streamlit interface to ask questions related to Tymeline, and the assistant will provide accurate responses using the fine-tuned LLM and RAG system.
 
 ## Project Structure
-
 app.py: Main Python script for the project.
+
 tymeline_data.csv: Data file used for training and retrieval.
+
 requirements.txt: Contains the list of required Python libraries.
+
 README.md: Documentation for the project.
+
 
 
 ## Technologies Used
