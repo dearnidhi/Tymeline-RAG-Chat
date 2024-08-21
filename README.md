@@ -20,19 +20,19 @@ This project demonstrates the creation of a customer chat assistant for Tymeline
 
 
 
-2. Install the required Python packages:
+## Install the required Python packages:
 
 
 pip install -r requirements.txt
 
 
-3. Download the tymeline_data.csv file and place it in the project directory.
+## Download the tymeline_data.csv file and place it in the project directory.
 
-4. Run the Streamlit App:
+## Run the Streamlit App:
 
 streamlit run app.py
 
-5. Interact with the Chat Assistant: Use the Streamlit interface to ask questions related to Tymeline, and the assistant will provide accurate responses using the fine-tuned LLM and RAG system.
+## Interact with the Chat Assistant: Use the Streamlit interface to ask questions related to Tymeline, and the assistant will provide accurate responses using the fine-tuned LLM and RAG system.
 
 ## Project Structure
 
