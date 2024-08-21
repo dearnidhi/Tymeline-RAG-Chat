@@ -1,4 +1,14 @@
 import pandas as pd
+import streamlit as st
+from langchain.chains import RetrievalQA
+from langchain.vectorstores import FAISS
+from langchain.embeddings import OpenAIEmbeddings
+from langchain.llms import OpenAI
+from transformers import Trainer, TrainingArguments
+
+
+# Step 1: Load and Preprocess Data
+# --------------------------------
 
 # Load the Tymeline data
 data = pd.read_csv('tymeline_data.csv')
@@ -12,15 +22,11 @@ print(data.head())
 # Convert data to list of tuples for easy processing
 dataset = [(row['question'], row['answer']) for index, row in data.iterrows()]
 
-from transformers import AutoModelForSeq2SeqLM, AutoTokenizer
-
-# Load the tokenizer and model
-tokenizer = AutoTokenizer.from_pretrained('t5-small')  # Using T5 model as an example
-model = AutoModelForSeq2SeqLM.from_pretrained('t5-small')
-
-
 
 from transformers import AutoModelForSeq2SeqLM, AutoTokenizer
+
+# Step 2: Load Pretrained LLM Model
+# ---------------------------------
 
 # Load the tokenizer and model
 tokenizer = AutoTokenizer.from_pretrained('t5-small')  # Using T5 model as an example
@@ -28,6 +34,9 @@ model = AutoModelForSeq2SeqLM.from_pretrained('t5-small')
 
 
 from datasets import Dataset
+
+# Step 3: Prepare Data for Fine-Tuning
+# ------------------------------------
 
 # Prepare the dataset for training
 train_data = Dataset.from_dict({
@@ -46,7 +55,8 @@ def preprocess_data(examples):
 train_data = train_data.map(preprocess_data, batched=True)
 
 
-from transformers import Trainer, TrainingArguments
+# Step 4: Fine-Tune the LLM
+# -------------------------
 
 # Define training arguments
 training_args = TrainingArguments(
@@ -69,10 +79,10 @@ trainer = Trainer(
 trainer.train()
 
 
-from langchain.chains import RetrievalQA
-from langchain.vectorstores import FAISS
-from langchain.embeddings import OpenAIEmbeddings
-from langchain.llms import OpenAI
+
+
+# Step 5: Implement Retrieval-Augmented Generation (RAG)
+# ------------------------------------------------------
 
 # Convert the Tymeline data into a FAISS vector store
 embeddings = OpenAIEmbeddings()
@@ -92,7 +102,10 @@ response = rag_model.run(query)
 print(response)
 
 
-import streamlit as st
+
+
+# Step 6: Build Streamlit Chat Interface
+# --------------------------------------
 
 # Set up the Streamlit interface
 st.title("Tymeline Customer Chat Assistant")
