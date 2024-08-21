@@ -78,9 +78,6 @@ trainer = Trainer(
 # Fine-tune the model
 trainer.train()
 
-
-
-
 # Step 5: Implement Retrieval-Augmented Generation (RAG)
 # ------------------------------------------------------
 
@@ -100,9 +97,6 @@ rag_model = RetrievalQA.from_chain_type(
 query = "How do I reset my Tymeline password?"
 response = rag_model.run(query)
 print(response)
-
-
-
 
 # Step 6: Build Streamlit Chat Interface
 # --------------------------------------
